@@ -106,6 +106,28 @@ class strngFunct
 	}
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // contents will be displayed by the display class
 // extends into the page class
 
@@ -116,16 +138,19 @@ class display  extends page
 			{
 			// grabs cvs file which will be the 'filename'
 				 $csv = $_GET['filename'];
-			// changes the directory via chdir into the upload folder	
-				chdir('uploads');                                     
+			// changes the directory via chdir into the upload folder                                     
 			//open csv file and put into following loop below to get data
-				$file = fopen($csv,"r");
+				$file = fopen("./uploads/".$csv,"r");
 				// defines the formatting of that said table 
 				tags::tableform();               
 				 $row = 1;
+				
+
 				 //loop through the data
  					while (($data=fgetcsv($file))!== FALSE)
-						{    
+				
+						{
+					
  							foreach($data as $value) {
 								 if ($row == 1) {
  								 tags::tableheadings($value);
@@ -146,7 +171,9 @@ class display  extends page
 		
 				  fclose($file);
           		}
-	      }
+	     
+}
+
 
 
 
@@ -179,7 +206,7 @@ class uploadForm extends page
      		if (file_exists($target_file)) 
 		{
    // unlink command enables the target_file (CSV) to be removed and replaced if it is duplicated within AFS 
-  		  unlink($target_file);
+  		  echo ($target_file);
      		}
 
 		// creates file path of newly uploaded target file 
@@ -236,7 +263,7 @@ class uploadForm extends page
      	}
      }
     
-    
+    sdsd
     
 	           
 ?>
